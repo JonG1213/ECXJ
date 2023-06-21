@@ -46,12 +46,12 @@ def create_jira_ticket(project_id, url):
     summary = f"Excess Permissions | {project_name} | Security hardening"
     description = f"""
     GCP's Native IAM Excess Permissions detection system has detected your project: {project_name} currently has service accounts with excess permissions. Please review and update the permissions accordingly.
-    Recommendations:
+    Recommendations: URL: {url}
 
     If any of these service accounts are not in used, please delete or detach role. If these service accounts were provisioned with Terraform, the permissions will need to be updated there.
-    Disclaimer: GCP IAM recommender generates recommendations by comparing a principle a total number of permissions with the permissions that the principal used in the last 90 days. If the role binding was created fewer than 90 days ago, the IAM recommender looks at the principal's permission usage in the time since the binding was created. Before apply any recommendations, please ensure you have the knowledge on how this would affect running services within a project. 
+    Disclaimer: GCP IAM recommender generates recommendations by comparing a principle a total number of permissions with the permissions that the principal used in the last 90 days. If the role binding was created fewer than 90 days ago, the IAM recommender looks at the principal's permission usage in the time since the binding was created. Before applying any recommendations, please ensure you have the knowledge on how this would affect running services within a project. You will have 30 days to revert any changes made, please keep track of which project's you've made changes to. 
 
-    URL: {url}
+    
     """
 
     new_task = prd_jira.create_issue(
@@ -72,5 +72,5 @@ def create_jira_ticket(project_id, url):
     print("Jira ticket created: ", issue_key)
 
 if __name__ == "__main__":
-    project_name = "unity-security-playground-test"  # Enter your project ID
+    project_name = ""  # Enter your project ID
     detect_projects_with_excess_permissions(project_name)
