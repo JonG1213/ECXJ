@@ -27,7 +27,7 @@ Before using the script, ensure that you have the following prerequisites in pla
 
 * Python Packages: Install the required Python packages by running the following command:
 ```
-pip install google-cloud-recommender google-cloud-secret-manager google-auth atlassian
+pip install google-cloud-recommender google-cloud-secret-manager google-auth atlassian-python-api
 ```
 ## Usage:
 To use the script, follow these steps:
