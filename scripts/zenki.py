@@ -22,7 +22,7 @@ def detect_projects_with_excess_permissions(project_name):
         url = f"https://console.cloud.google.com/home/recommendations/list/IAM_ROLES?project={project_name}"
         print(project_id, insight_id)
         create_jira_ticket(project_id, url)
-        break
+        
 
 def get_secret(project_id, secret, version):
     client = secretmanager.SecretManagerServiceClient()
